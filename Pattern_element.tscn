@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Pattern_element.gd" type="Script" id=1]
+
+[node name="Pattern_element" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReferenceRect" type="ColorRect" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="ReferenceRect" to="." method="_on_ColorRect_mouse_entered"]
+[connection signal="mouse_exited" from="ReferenceRect" to="." method="_on_ColorRect_mouse_exited"]

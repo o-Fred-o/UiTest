@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/pause.png" type="Texture" id=1]
 [ext_resource path="res://assets/play.png" type="Texture" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://Pattern.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -59,86 +60,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="."]
-anchor_left = 0.086
-anchor_right = 0.086
-margin_left = 1.936
-margin_right = 141.936
-margin_bottom = 16.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 62.0
+margin_right = 70.0
+margin_bottom = 76.0
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer2"]
-margin_right = 14.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CurrentTimeLabel" type="Label" parent="VBoxContainer/HBoxContainer3"]
+margin_bottom = 14.0
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer2"]
-margin_left = 18.0
-margin_right = 32.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect3" type="ColorRect" parent="VBoxContainer2"]
-margin_left = 36.0
-margin_right = 50.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect4" type="ColorRect" parent="VBoxContainer2"]
-margin_left = 54.0
-margin_right = 68.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect5" type="ColorRect" parent="VBoxContainer2"]
-margin_left = 72.0
-margin_right = 86.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect6" type="ColorRect" parent="VBoxContainer2"]
-margin_left = 90.0
-margin_right = 104.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect7" type="ColorRect" parent="VBoxContainer2"]
-margin_left = 108.0
-margin_right = 122.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect8" type="ColorRect" parent="VBoxContainer2"]
-margin_left = 126.0
-margin_right = 140.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Pattern" parent="." instance=ExtResource( 4 )]
+pos_x = 100
+pos_y = 50
 [connection signal="button_down" from="VBoxContainer/Actions/Play" to="." method="_on_Play_button_down"]
 [connection signal="button_down" from="VBoxContainer/Actions/Pause" to="." method="_on_Pause_button_down"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/SpeedSlider" to="." method="_on_SpeedSlider_value_changed"]

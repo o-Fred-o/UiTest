@@ -29,3 +29,5 @@ margin_bottom = 256.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="liste_notes" type="Node" parent="."]

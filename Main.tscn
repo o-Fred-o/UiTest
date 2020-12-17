@@ -72,6 +72,8 @@ margin_bottom = 14.0
 current_time = 0
 pos_x = 100
 pos_y = 50
+color = Color( 0.105882, 0.811765, 0.247059, 1 )
+
 [connection signal="button_down" from="VBoxContainer/Actions/Play" to="." method="_on_Play_button_down"]
 [connection signal="button_down" from="VBoxContainer/Actions/Pause" to="." method="_on_Pause_button_down"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/SpeedSlider" to="." method="_on_SpeedSlider_value_changed"]

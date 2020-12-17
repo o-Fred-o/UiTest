@@ -10,7 +10,7 @@ func _ready():
     myTimer=0
     speed=0.3
     $VBoxContainer/HBoxContainer/SpeedSlider.value=speed*100
-    $Pattern.play=false
+    #$Pattern.play=false
     pos=0
     $Pattern.notes=[0,2,0,0,2,0,0,4,0,0,0,8,0,2,2,0]
 

@@ -1,11 +1,8 @@
 extends Control
 
-#var color_rect
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
     pass # Replace with function body.
-
 
 func _on_ColorRect_mouse_entered():
 #	color_rect = ColorRect.new()
@@ -14,7 +11,6 @@ func _on_ColorRect_mouse_entered():
 #	color_rect.color=Color.red
 #	add_child(color_rect)
     $ReferenceRect.color=Color.red
-
 
 func _on_ColorRect_mouse_exited():
     #remove_child(color_rect)

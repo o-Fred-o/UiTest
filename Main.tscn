@@ -69,6 +69,7 @@ margin_bottom = 76.0
 margin_bottom = 14.0
 
 [node name="Pattern" parent="." instance=ExtResource( 4 )]
+current_time = 0
 pos_x = 100
 pos_y = 50
 [connection signal="button_down" from="VBoxContainer/Actions/Play" to="." method="_on_Play_button_down"]

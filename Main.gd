@@ -25,6 +25,8 @@ func _process(delta):
 			if (pos>$Pattern.width-1):
 				pos=0
 			$VBoxContainer/HBoxContainer3/CurrentTimeLabel.text="Time : " + String(pos)
+			$Pattern.show_current_time()
+			$Pattern.play_notes()
 			
 		myTimer += delta
 

@@ -1,6 +1,8 @@
 extends Control
 
 export(Color) var color
+export(int) var note_time
+export(int) var note_value
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

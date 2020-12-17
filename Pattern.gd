@@ -35,9 +35,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if play:
-		show_current_time()
-		#play_notes()
+	pass
+#	if play:
+#		show_current_time()
+#		play_notes()
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -78,12 +79,14 @@ func draw_mouse():
 func draw_notes():
 	#ajout des element pour les notes 
 	delete_children($liste_notes)
-	print(notes)
+	#print(notes)
 	for n in notes:
 		var note = element.instance()
 		note.rect_size=Vector2(cell_size,cell_size)
 		note.rect_position=Vector2(pos_x+n.x*cell_size,pos_y+n.y*cell_size)
 		note.color=color
+		note.note_time=n.x
+		note.note_value=n.y
 		$liste_notes.add_child(note)
 	
 # affiche une barre vertical pour le current_time    
@@ -92,7 +95,9 @@ func show_current_time():
 	
 #joue les notes de l'instrument    
 func play_notes():
-	pass    
+	for n in $liste_notes.get_children():
+		if (n.note_time == current_time):
+			print(n.note_value)    
 	
 func delete_children(node):
 	for n in node.get_children():

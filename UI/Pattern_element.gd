@@ -1,12 +1,14 @@
 extends Control
 
 export(Color) var color
+export(int) var element_size
 export(int) var note_time
 export(int) var note_value
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    $ReferenceRect.color=color
+	$ReferenceRect.color=color
+	$ReferenceRect.rect_size=Vector2(element_size,element_size)
 
 func _on_ColorRect_mouse_entered():
 #	color_rect = ColorRect.new()
@@ -14,9 +16,9 @@ func _on_ColorRect_mouse_entered():
 #	color_rect.set_size($ReferenceRect.rect_size)
 #	color_rect.color=Color.red
 #	add_child(color_rect)
-    $ReferenceRect.color=color
+	$ReferenceRect.color=color
 
 func _on_ColorRect_mouse_exited():
-    #remove_child(color_rect)
-    $ReferenceRect.color=color
-    pass
+	#remove_child(color_rect)
+	$ReferenceRect.color=color
+	pass

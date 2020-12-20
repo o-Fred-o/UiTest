@@ -1,43 +1,48 @@
 extends Control
 
-var speed
-var myTimer
-var pos
-var childList
+var main_tick
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    myTimer=0
-    speed=0.3
-    $VBoxContainer/HBoxContainer/SpeedSlider.value=speed*100
-    #$Pattern.play=false
-    pos=0
-    #$Pattern.notes=[]
+	$TopMenu/HBoxContainer/SpeedSlider.value=Global.bpm
+	$TopMenu/HBoxContainer/SpeedLabel.text="BPM : "+String(Global.bpm)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    if ($Pattern.play):
-        if (myTimer>=speed):
-            myTimer=0
-            $Pattern.current_time=pos           
-            #position suivante
-            pos=pos+1
-            if (pos>$Pattern.width-1):
-                pos=0
-            $VBoxContainer/HBoxContainer3/CurrentTimeLabel.text="Time : " + String(pos)
-            $Pattern.show_current_time()
-            $Pattern.play_notes()
-            
-        myTimer += delta
+	if (!Global.play):
+		return
+	
+	var time = 0.0
+	# Obtain from ticks.
+	time = (OS.get_ticks_usec() - Global.time_begin) / 1000000.0
+	# Compensate.
+	time -= Global.time_delay
+	#1 noire : 1 temp
+	var beat = int(time * Global.bpm / 60.0)
+	#1 double croche : 1/4 temps
+	var tick = int(time * Global.bpm / 15.0)
+	var current_beat = (beat% Global.bars) +1
+	var current_tick = tick% (Global.bars*4)
+	
+	#var seconds = int(time)
+	#var seconds_total = int($Player.stream.get_length())
+	#$TopMenu/HBoxContainer/CurrentTimeLabel.text = str("BEAT: ", beat % BARS + 1, "/", BARS, " TIME: ", seconds / 60, ":", strsec(seconds % 60), " / ", seconds_total / 60, ":", strsec(seconds_total % 60))
+	$TopMenu/HBoxContainer/CurrentTimeLabel.text = str("BEAT: ", current_beat, "/", Global.bars)
+	#plug aux patterns
+	if (main_tick != current_tick):
+		main_tick=current_tick
+		for pattern in $Patterns.get_children():
+			pattern.current_time=main_tick
+			pattern.show_current_time()
+			pattern.play_notes()
 
-func _on_Play_button_down():
-    pos=0
-    $Pattern.play= !$Pattern.play
-
-func _on_Pause_button_down():
-    $Pattern.play= !$Pattern.play
 
 func _on_SpeedSlider_value_changed(value):
-    $VBoxContainer/HBoxContainer2/SpeedLabel.text="Speed : "+String(value)
-    speed = value/100
-    
+	$TopMenu/HBoxContainer/SpeedLabel.text="BPM : "+String(value)
+	Global.bpm = value
+	
+func strsec(secs):
+	var s = str(secs)
+	if (secs < 10):
+		s = "0" + s
+	return s

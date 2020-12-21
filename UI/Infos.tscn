@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/UI/baseline_equalizer_white_18dp.png" type="Texture" id=1]
+
+[node name="Infos" type="HBoxContainer"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="."]
+margin_top = 2.0
+margin_right = 74.0
+margin_bottom = 24.0
+text = "Songname"
+
+[node name="Equalizer" type="Button" parent="."]
+margin_left = 78.0
+margin_right = 108.0
+margin_bottom = 26.0
+icon = ExtResource( 1 )

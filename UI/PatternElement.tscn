@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://UI/Pattern_element.gd" type="Script" id=1]
+[ext_resource path="res://UI/PatternElement.gd" type="Script" id=1]
 
 [node name="Pattern_element" type="Control"]
 anchor_right = 0.016
@@ -18,6 +18,5 @@ margin_bottom = 16.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="mouse_entered" from="ReferenceRect" to="." method="_on_ColorRect_mouse_entered"]
 [connection signal="mouse_exited" from="ReferenceRect" to="." method="_on_ColorRect_mouse_exited"]

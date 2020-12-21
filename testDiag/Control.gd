@@ -1,10 +1,5 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var edit_value = $TabContainer/Options/LineEdit
 onready var slider_value =  $TabContainer/Options/HSlider
 

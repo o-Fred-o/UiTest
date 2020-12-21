@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/theme/dark/theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/Actions.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
-[ext_resource path="res://UI/Pattern.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/sound/Hihat BlackHole Open.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/Bass Guitar Feel.wav" type="AudioStream" id=4]
+[ext_resource path="res://UI/PatternLayout.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sound/Kick 90s 2.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/sound/Bass Guitar Feel.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/Hihat BlackHole Open.wav" type="AudioStream" id=7]
+[ext_resource path="res://UI/Bpm_Vol.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/Infos.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/UI/baseline_volume_down_white_18dp.png" type="Texture" id=10]
 
-[node name="Main" type="Control"]
+[node name="Main" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -17,62 +20,59 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopMenu" type="VBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Actions" parent="TopMenu" instance=ExtResource( 2 )]
-margin_bottom = 26.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TopMenu"]
-margin_top = 30.0
+[node name="TopLayout" type="HBoxContainer" parent="."]
 margin_right = 1024.0
 margin_bottom = 52.0
-
-[node name="SpeedSlider" type="HSlider" parent="TopMenu/HBoxContainer"]
-margin_right = 504.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-max_value = 250.0
-value = 115.0
-
-[node name="CurrentTimeLabel" type="Label" parent="TopMenu/HBoxContainer"]
-margin_left = 508.0
-margin_right = 516.0
-margin_bottom = 22.0
-
-[node name="SpeedLabel" type="Label" parent="TopMenu/HBoxContainer"]
-margin_left = 520.0
-margin_right = 1024.0
-margin_bottom = 22.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Patterns" type="Node" parent="."]
+[node name="Actions" parent="TopLayout" instance=ExtResource( 2 )]
+margin_right = 338.0
+size_flags_vertical = 0
 
-[node name="Pattern" parent="Patterns" instance=ExtResource( 4 )]
-position = Vector2( 242, 111 )
-current_time = 0
-color = Color( 0.105882, 0.811765, 0.247059, 1 )
+[node name="Infos" parent="TopLayout" instance=ExtResource( 9 )]
+
+[node name="Bpm_Vol" parent="TopLayout" instance=ExtResource( 8 )]
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+margin_top = 56.0
+margin_right = 1024.0
+margin_bottom = 238.0
+
+[node name="PatternControl" type="HBoxContainer" parent="MainLayout"]
+margin_right = 1024.0
+margin_bottom = 26.0
+
+[node name="Label" type="Label" parent="MainLayout/PatternControl"]
+margin_top = 2.0
+margin_right = 54.0
+margin_bottom = 24.0
+text = "Control"
+
+[node name="Button" type="Button" parent="MainLayout/PatternControl"]
+margin_left = 58.0
+margin_right = 88.0
+margin_bottom = 26.0
+icon = ExtResource( 10 )
+
+[node name="PatternLayout" parent="MainLayout" instance=ExtResource( 5 )]
+margin_top = 30.0
+margin_bottom = 78.0
+intrument_color = Color( 0.117647, 0.333333, 0.364706, 1 )
+instrument = ExtResource( 4 )
+
+[node name="PatternLayout2" parent="MainLayout" instance=ExtResource( 5 )]
+margin_top = 82.0
+margin_bottom = 130.0
+height = 1
+intrument_color = Color( 0.694118, 0.145098, 0.313726, 1 )
 instrument = ExtResource( 7 )
 
-[node name="Pattern2" parent="Patterns" instance=ExtResource( 4 )]
-position = Vector2( 243, 379 )
-current_time = 0
+[node name="PatternLayout3" parent="MainLayout" instance=ExtResource( 5 )]
+margin_top = 134.0
+margin_bottom = 182.0
 height = 1
-color = Color( 0.105882, 0.380392, 0.811765, 1 )
-instrument = ExtResource( 5 )
-
-[node name="Pattern3" parent="Patterns" instance=ExtResource( 4 )]
-position = Vector2( 243, 407 )
-current_time = 0
-height = 1
-color = Color( 0.105882, 0.811765, 0.760784, 1 )
+intrument_color = Color( 0.372549, 0.584314, 0.0941176, 1 )
 instrument = ExtResource( 6 )
-
-[connection signal="value_changed" from="TopMenu/HBoxContainer/SpeedSlider" to="." method="_on_SpeedSlider_value_changed"]

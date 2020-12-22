@@ -5,7 +5,8 @@ export var height = 16
 export var cell_size = 16
 export(Color) var intrument_color
 export(AudioStream) var instrument
-export var pattern_position = 0
+export var pattern_indice = 0
+export var volume = 0
 
 var notes = []
 var current_time = 0
@@ -15,6 +16,8 @@ var cell
 var current_time_rect
 var mouse_pos
 var array_pos
+var active_pattern
+var pattern_pos
 
 func _ready():
     #cellule active
@@ -28,6 +31,7 @@ func _ready():
     current_time_rect.rect_position=Vector2(current_time*cell_size-1,0)
     current_time_rect.rect_size=Vector2(cell_size,height*cell_size)
     current_time_rect.color=Color(0.2,0.2,0.2,0.5)
+    current_time_rect.visible=false
     add_child(current_time_rect)
     draw_notes()
     
@@ -40,6 +44,8 @@ func _process(delta):
         current_time=Global.current_tick
         show_current_time()
         play_notes()
+        active_pattern=current_time/16
+        pattern_pos=current_time-pattern_indice*16
 
 func _input(event):
     if event is InputEventMouseMotion:
@@ -100,13 +106,18 @@ func draw_notes():
     
 # affiche une barre vertical pour le current_time    
 func show_current_time():
-    current_time_rect.rect_position=Vector2(current_time*cell_size,0)
+    if (active_pattern == pattern_indice):
+        current_time_rect.visible=true
+        current_time_rect.rect_position=Vector2(pattern_pos*cell_size,0)
+    else:
+        current_time_rect.visible=false
     
 #joue les notes de l'instrument    
 func play_notes():
     for n in $liste_notes.get_children():
-        if (n.note_time == current_time):
+        if (active_pattern == pattern_indice && n.note_time == pattern_pos):
             $AudioStreamPlayer.set_pitch_scale(n.note_value/10)
+            $AudioStreamPlayer.set_volume_db(Global.volume)
             $AudioStreamPlayer.play()
     
 func delete_children(node):

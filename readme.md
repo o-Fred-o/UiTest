@@ -2,11 +2,11 @@ Icons : https://material.io/resources/icons/?icon=content_paste&style=baseline
 
 todo :
 
-slider pour volume
+voir valeur des notes
+
+revoir interface
 
 ligne de control pour mute chaque pattern
-
-play sur une duree de plusieurs pattern
 
 choix instrument
 

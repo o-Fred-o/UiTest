@@ -5,22 +5,24 @@ export var height = 16
 export var cell_size = 16
 export(Color) var intrument_color
 export(AudioStream) var instrument
-export var nb_patterns = 2
+var nb_patterns = 1
 
 var patternScene = load("res://UI/Pattern.tscn")
 
 func _ready():
     rect_min_size=Vector2(width*cell_size, height*cell_size)
+    
+    nb_patterns=Global.nb_parttern
        
     for i in nb_patterns:
         var pattern
         pattern = patternScene.instance()
-        pattern.pattern_position=i
+        pattern.pattern_indice=i
         pattern.height=height
         pattern.width=width
         pattern.cell_size=cell_size
         pattern.intrument_color=intrument_color
-        pattern.instrument=instrument        
+        pattern.instrument=instrument
         $PatternList.add_child(pattern)
 
 #    for pat in $PatternList.get_children():

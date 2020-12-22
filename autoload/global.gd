@@ -2,8 +2,12 @@ extends Node
 
 var bpm = 116
 const bars = 4
+var nb_parttern = 2
 
+var volume = 0
+var mute = false
 var play = false
+
 var current_tick
 var current_beat
 

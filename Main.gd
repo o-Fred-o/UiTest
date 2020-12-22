@@ -19,7 +19,6 @@ func _process(delta):
     var beat = int(time * Global.bpm / 60.0)
     #1 double croche : 1/4 temps
     var tick = int(time * Global.bpm / 15.0)
-    
+        
     Global.current_beat = (beat% Global.bars) +1
-    Global.current_tick = tick% (Global.bars*4)
-    
+    Global.current_tick = tick % (Global.bars*4*Global.nb_parttern)

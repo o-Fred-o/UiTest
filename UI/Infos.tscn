@@ -8,15 +8,25 @@ margin_right = 681.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="."]
-margin_top = 2.0
-margin_right = 74.0
-margin_bottom = 24.0
-text = "Songname"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Equalizer" type="Button" parent="."]
-margin_left = 78.0
-margin_right = 108.0
-margin_bottom = 26.0
+margin_right = 30.0
+margin_bottom = 38.0
 icon = ExtResource( 1 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 34.0
+margin_right = 339.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 12.0
+margin_right = 298.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "Songname"

@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sound/Bass Guitar Feel.wav" type="AudioStream" id=1]
+[ext_resource path="res://testDiag/testSound.gd" type="Script" id=2]
+[ext_resource path="res://assets/theme/dark/theme.tres" type="Theme" id=3]
+
+[node name="Control" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+margin_right = 8.0
+margin_bottom = 22.0
+
+[node name="MenuButton" type="MenuButton" parent="HBoxContainer2"]
+margin_left = 12.0
+margin_right = 55.0
+margin_bottom = 22.0
+text = "Liste"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 26.0
+margin_right = 1024.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="HBoxContainer"]
+margin_right = 38.0
+margin_bottom = 22.0
+text = "Play"
+
+[node name="Stop" type="Button" parent="HBoxContainer"]
+margin_left = 42.0
+margin_right = 82.0
+margin_bottom = 22.0
+text = "Stop"
+
+[node name="PitchSlider" type="HSlider" parent="HBoxContainer"]
+margin_left = 86.0
+margin_right = 553.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 10.0
+step = 0.05
+value = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 557.0
+margin_right = 1024.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+margin_top = 52.0
+margin_right = 1024.0
+margin_bottom = 94.0
+
+[node name="Effect" type="Button" parent="HBoxContainer3"]
+margin_right = 47.0
+margin_bottom = 42.0
+text = "Effect"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer3"]
+margin_left = 51.0
+margin_right = 151.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Depth" type="Label" parent="HBoxContainer3/VBoxContainer"]
+margin_right = 100.0
+margin_bottom = 22.0
+text = "Depth"
+
+[node name="DepthSlider" type="HSlider" parent="HBoxContainer3/VBoxContainer"]
+margin_top = 26.0
+margin_right = 100.0
+margin_bottom = 42.0
+min_value = 0.1
+max_value = 4.0
+step = 0.1
+value = 1.0
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
+[connection signal="button_down" from="HBoxContainer/Play" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="HBoxContainer/Stop" to="." method="_on_Stop_button_down"]
+[connection signal="value_changed" from="HBoxContainer/PitchSlider" to="." method="_on_PitchSlider_value_changed"]
+[connection signal="button_down" from="HBoxContainer3/Effect" to="." method="_on_Effect_button_down"]
+[connection signal="value_changed" from="HBoxContainer3/VBoxContainer/DepthSlider" to="." method="_on_DepthSlider_value_changed"]

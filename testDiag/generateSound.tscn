@@ -1,0 +1,190 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://testDiag/generateSound.gd" type="Script" id=1]
+[ext_resource path="res://assets/theme/dark/theme.tres" type="Theme" id=2]
+
+[sub_resource type="AudioStreamGenerator" id=1]
+
+[node name="Control" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelInstrument" type="PanelContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 184.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelInstrument"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 1022.0
+margin_bottom = 182.0
+
+[node name="Pulse" type="HBoxContainer" parent="VBoxContainer/PanelInstrument/VBoxContainer"]
+margin_right = 1020.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelInstrument/VBoxContainer/Pulse"]
+margin_right = 80.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 80, 0 )
+text = "Pulse :"
+
+[node name="PulseSlider" type="HSlider" parent="VBoxContainer/PanelInstrument/VBoxContainer/Pulse"]
+margin_left = 84.0
+margin_right = 550.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 600.0
+step = 5.0
+value = 440.0
+
+[node name="PulseValueLabel" type="Label" parent="VBoxContainer/PanelInstrument/VBoxContainer/Pulse"]
+margin_left = 554.0
+margin_right = 1020.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+
+[node name="Modulation" type="HBoxContainer" parent="VBoxContainer/PanelInstrument/VBoxContainer"]
+margin_top = 26.0
+margin_right = 1020.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelInstrument/VBoxContainer/Modulation"]
+margin_right = 80.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 80, 0 )
+text = "Modul :"
+
+[node name="ModulationSlider" type="HSlider" parent="VBoxContainer/PanelInstrument/VBoxContainer/Modulation"]
+margin_left = 84.0
+margin_right = 550.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="ModulationValueLabel" type="Label" parent="VBoxContainer/PanelInstrument/VBoxContainer/Modulation"]
+margin_left = 554.0
+margin_right = 1020.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+
+[node name="Phase" type="HBoxContainer" parent="VBoxContainer/PanelInstrument/VBoxContainer"]
+margin_top = 52.0
+margin_right = 1020.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelInstrument/VBoxContainer/Phase"]
+margin_top = 53.0
+margin_right = 80.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 80, 0 )
+text = "Phase :"
+
+[node name="PhaseValueLabel" type="Label" parent="VBoxContainer/PanelInstrument/VBoxContainer/Phase"]
+margin_left = 84.0
+margin_top = 53.0
+margin_right = 888.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/PanelInstrument/VBoxContainer/Phase"]
+margin_left = 892.0
+margin_right = 1020.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="PanelVolume" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 188.0
+margin_right = 1024.0
+margin_bottom = 240.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelVolume"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 1022.0
+margin_bottom = 50.0
+
+[node name="Volume" type="HBoxContainer" parent="VBoxContainer/PanelVolume/VBoxContainer"]
+margin_right = 1020.0
+margin_bottom = 22.0
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelVolume/VBoxContainer/Volume"]
+margin_right = 80.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 80, 0 )
+text = "Volume :"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelVolume/VBoxContainer/Volume"]
+margin_left = 84.0
+margin_right = 550.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = -5.0
+max_value = 5.0
+step = 0.1
+
+[node name="VolumeValueLabel" type="Label" parent="VBoxContainer/PanelVolume/VBoxContainer/Volume"]
+margin_left = 554.0
+margin_right = 1020.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+
+[node name="Pitch" type="HBoxContainer" parent="VBoxContainer/PanelVolume/VBoxContainer"]
+margin_top = 26.0
+margin_right = 1020.0
+margin_bottom = 48.0
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelVolume/VBoxContainer/Pitch"]
+margin_right = 80.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 80, 0 )
+text = "Pitch :"
+
+[node name="PitchSlider" type="HSlider" parent="VBoxContainer/PanelVolume/VBoxContainer/Pitch"]
+margin_left = 84.0
+margin_right = 550.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 10.0
+step = 0.05
+value = 1.0
+
+[node name="PitchValueLabel" type="Label" parent="VBoxContainer/PanelVolume/VBoxContainer/Pitch"]
+margin_left = 554.0
+margin_right = 1020.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+[connection signal="value_changed" from="VBoxContainer/PanelInstrument/VBoxContainer/Pulse/PulseSlider" to="." method="_on_PulseSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelInstrument/VBoxContainer/Modulation/ModulationSlider" to="." method="_on_ModulationSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelVolume/VBoxContainer/Volume/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelVolume/VBoxContainer/Pitch/PitchSlider" to="." method="_on_PitchSlider_value_changed"]

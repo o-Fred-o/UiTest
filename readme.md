@@ -1,12 +1,18 @@
 Icons : https://material.io/resources/icons/?icon=content_paste&style=baseline
 
-todo :
+Voir : https://www.gdquest.com/docs/guidelines/best-practices/godot-gdscript/
 
-voir valeur des notes
+-> creer nouveau projet tout reimporter, refacto code
+
+todo :
 
 revoir interface
 
 ligne de control pour mute chaque pattern
+	
+	soit on boucle sur 1, soit toute la liste
+
+revoir la gestion des notes et des patterns
 
 choix instrument
 

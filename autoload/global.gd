@@ -2,7 +2,10 @@ extends Node
 
 var bpm = 116
 const bars = 4
-var nb_parttern = 2
+#nombre de pattern a afficher dans le patternlayout
+var nb_pattern = 4
+#nombre de patterns actifs pour la boucle sur le current_tick
+var active_patterns = 1
 
 var volume = 0
 var mute = false
@@ -18,4 +21,4 @@ var time_delay
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+    pass # Replace with function body.

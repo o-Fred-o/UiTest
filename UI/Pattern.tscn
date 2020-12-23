@@ -8,6 +8,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+current_time_color = Color( 0.45098, 0.45098, 0.45098, 0.627451 )
 
 [node name="mouse_pos" type="Label" parent="."]
 visible = false

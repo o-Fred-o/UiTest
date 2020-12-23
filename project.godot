@@ -29,6 +29,11 @@ config/icon="res://icon.png"
 
 Global="*res://autoload/global.gd"
 
+[display]
+
+window/size/width=1200
+window/size/height=768
+
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]

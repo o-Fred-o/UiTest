@@ -4,6 +4,9 @@ Voir : https://www.gdquest.com/docs/guidelines/best-practices/godot-gdscript/
 
 -> creer nouveau projet tout reimporter, refacto code
 
+Song -> Sequences (16) -> Pattern (8) -> Notes (16)
+		       -> Instrument
+
 todo :
 
 revoir interface
